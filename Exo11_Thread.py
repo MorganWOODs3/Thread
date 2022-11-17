@@ -25,8 +25,8 @@ if __name__ == '__main__':
     t1.start()
     t2.start()
 
-    t1.join() # j'attends la fin de la thread
-    t2.join() # j'attends la fin de la thread
+    t1.join()
+    t2.join()
 
     end = time.perf_counter()
     print(f"Tasks ended in {round(end - start, 2)} second(s)")

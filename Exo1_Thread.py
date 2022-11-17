@@ -5,13 +5,6 @@ import requests
 
 urls = ["https://cdn.pixabay.com/photo/2022/11/14/06/56/maple-7590861_960_720.jpg", "https://cdn.pixabay.com/photo/2016/12/19/08/39/mobile-phone-1917737_960_720.jpg", ]
 
-# def download_image(img_url):
-#     img_bytes = urllib.request.urlopen(img_url).read()
-#     img_name = img_url.split('/')[9]
-#     img_file = open(img_name, 'wb')
-#     img_file.write(img_bytes)
-#     img_file.close()
-
 
 def download_image(img_url):
     img_bytes = requests.get(img_url).content

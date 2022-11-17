@@ -1,5 +1,6 @@
 import time
 import multiprocessing
+
 def task():
     print(f"Task starts for 1 second")
     time.sleep(1)

@@ -6,12 +6,13 @@ def task(i):
     time.sleep(1)
     print(f"Task {i} ends")
 
-start = time.perf_counter()
+if __name__ == "__main__":
+    start = time.perf_counter()
 
-task(1)
-task(2)
-end = time.perf_counter()
-print(f"Tasks ended in {round(end -start, 2)} second(s)")
+    task(1)
+    task(2)
+    end = time.perf_counter()
+    print(f"Tasks ended in {round(end -start, 2)} second(s)")
 
 start = time.perf_counter()
 t1 = threading.Thread(target=task, args=[1])

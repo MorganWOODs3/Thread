@@ -3,20 +3,38 @@ from PyQt5.QtWidgets import QApplication, QWidget, QTextEdit, QVBoxLayout, QPush
 import sys
 import socket
 
-HOST = "127.0.0.1"  # The server's hostname or IP address
-PORT = 65432  # The port used by the server
-if __name__ == '__main__':
-    client_socket = socket.socket()
-    client_socket.connect((HOST, PORT))
-    message = "Client en attente"
+host = "127.0.0.1"  # The server's hostname or IP address
+port = 65432  # The port used by the server
+#
+# client_socket = socket.socket()
+# client_socket.connect((HOST, PORT))
+# message = "Client en attente"
+# client_socket.send(message.encode())
+# data = client_socket.recv(1024)
+# print(data.decode())
+# env = input("Envoie une commande: ")
+# client_socket.send(env.encode())
+
+
+
+message = 'Client'
+
+print(f"Ouverture de la socket sur le serveur {host} port {port}")
+client_socket = socket.socket()
+client_socket.connect((host, port))
+print("Serveur est connecté")
+
+while message != 'disconnect':
+    message = input("Commande Server : ")
     client_socket.send(message.encode())
-    data = client_socket.recv(1024)
-    print(data.decode())
-    env = input("Envoie une commande: ")
-    client_socket.send(env.encode())
+    print("Message envoyé")
+    message = client_socket.recv(1024).decode()
+    print(f"Message du serveur : {message}")
+
+# Fermeture de la socket du client
 
 
-    #client_socket.close()
+
 
 
 

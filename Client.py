@@ -1,21 +1,60 @@
-# echo-client.py
-from PyQt5.QtWidgets import QApplication, QWidget, QTextEdit, QVBoxLayout, QPushButton
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QFont
+from PyQt5 import uic
 import sys
 import socket
 
+class MyGUI(QMainWindow):
+
+    def __init__(self):
+        super(MyGUI, self).__init__()
+        uic.loadUi("untitled.ui", self)
+        self.show()
+
+def main():
+    app = QApplication([])
+    window = MyGUI()
+    app.exec_()
+# def main():
+#     app = QApplication([])
+#     window = QWidget()
+#     window.setGeometry(100, 100, 200, 300)
+#     window.setWindowTitle("My first app")
+#
+#
+#
+#     layout = QVBoxLayout()
+#
+#     label = QLabel("Press the Button Below")
+#     textbox = QTextEdit()
+#     button = QPushButton("Press Me!")
+#
+#     button.clicked.connect(lambda: clicked_on(textbox.toPlainText()))
+#
+#     layout.addWidget(label)
+#     layout.addWidget(textbox)
+#     layout.addWidget(button)
+#
+#     window.setLayout(layout)
+#     # label = QLabel(window)
+#     # label.setText("Bonjour Tout le monde")
+#     # label.setFont(QFont("Arial", 16))
+#     # label.move(50, 100)
+#
+#     window.show()
+#     app.exec_()
+#
+# def clicked_on(msg):
+#     message = QMessageBox()
+#     message.setText(msg)
+#     message.exec_()
+
+if __name__ == '__main__':
+    main()
+
+
 host = "127.0.0.1"  # The server's hostname or IP address
 port = 65432  # The port used by the server
-#
-# client_socket = socket.socket()
-# client_socket.connect((HOST, PORT))
-# message = "Client en attente"
-# client_socket.send(message.encode())
-# data = client_socket.recv(1024)
-# print(data.decode())
-# env = input("Envoie une commande: ")
-# client_socket.send(env.encode())
-
-
 
 message = 'Client'
 
@@ -39,7 +78,8 @@ print("Connexion arrêter : Server")
 
 
 
-
+#
+#
 # class TextEditDemo(QWidget):
 #     def __init__(self, parent=None):
 #         super().__init__(parent)
@@ -77,3 +117,4 @@ print("Connexion arrêter : Server")
 #     win = TextEditDemo()
 #     win.show()
 #     sys.exit(app.exec_())
+

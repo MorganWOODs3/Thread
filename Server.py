@@ -87,10 +87,9 @@ while message != "kill":
 
     if message == 'ping':
         ip = "8.8.8.8"
-        ping = os.popen(f"ping de {ip}").read()
-        print(ping)
-        conn.send(ping.encode())
-        # os.system(('ping -n 4 {}'.format(ip)))
+        ping = os.popen(f"ping {ip}").read()
+        print(f'\nVoici le ping : \n{ping}')
+        conn.send(f'\nVoici le ping : \n {ping}'.encode())
 
 conn.send(f'la connexion du server est fini'.encode())
 server_socket.close()

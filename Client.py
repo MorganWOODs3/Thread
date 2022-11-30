@@ -25,14 +25,15 @@ client_socket.connect((host, port))
 print("Serveur est connecté")
 
 while message != 'disconnect':
-    message = input("Commande Server : ")
+    message = input("\nCommande Server : ")
     client_socket.send(message.encode())
-    print("Message envoyé")
+    print("\nMessage envoyé\n")
     message = client_socket.recv(1024).decode()
-    print(f"Message du serveur : {message}")
+    print(f"Message du serveur : \n{message}\n")
 
 # Fermeture de la socket du client
-
+client_socket.close()
+print("Connexion arrêter : Server")
 
 
 

@@ -1,5 +1,3 @@
-import os
+import sys
 
-ip = input('ip :')
-os.system(('ping -n 4 {}'.format(ip)))
-
+print("User Current Version:-", sys.version)

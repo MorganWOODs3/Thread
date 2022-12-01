@@ -4,17 +4,18 @@ from PyQt5 import uic
 import sys
 import socket
 
-class MyGUI(QMainWindow):
+# class MyGUI(QMainWindow):
+#
+#     def __init__(self):
+#         super(MyGUI, self).__init__()
+#         uic.loadUi("untitled.ui", self)
+#         self.show()
+#
+# def main():
+#     app = QApplication([])
+#     window = MyGUI()
+#     app.exec_()
 
-    def __init__(self):
-        super(MyGUI, self).__init__()
-        uic.loadUi("untitled.ui", self)
-        self.show()
-
-def main():
-    app = QApplication([])
-    window = MyGUI()
-    app.exec_()
 # def main():
 #     app = QApplication([])
 #     window = QWidget()
@@ -48,9 +49,9 @@ def main():
 #     message = QMessageBox()
 #     message.setText(msg)
 #     message.exec_()
-
-if __name__ == '__main__':
-    main()
+#
+# if __name__ == '__main__':
+#     main()
 
 
 host = "127.0.0.1"  # The server's hostname or IP address
@@ -62,6 +63,14 @@ print(f"Ouverture de la socket sur le serveur {host} port {port}")
 client_socket = socket.socket()
 client_socket.connect((host, port))
 print("Serveur est connecté")
+# msg = ""
+# while msg != "kill" and msg != "disconnect" and msg != "reset":
+#     msg = input("\nCommande Server : ")
+#     client_socket.send(msg.encode())
+#     print("\nMessage envoyé\n")
+#     msg = client_socket.recv(1024).decode()
+#     print(f"Message du serveur : \n{msg}\n")
+# client_socket.close()
 
 while message != 'disconnect':
     message = input("\nCommande Server : ")
@@ -73,48 +82,3 @@ while message != 'disconnect':
 # Fermeture de la socket du client
 client_socket.close()
 print("Connexion arrêter : Server")
-
-
-
-
-
-#
-#
-# class TextEditDemo(QWidget):
-#     def __init__(self, parent=None):
-#         super().__init__(parent)
-#
-#         self.i = 0
-#         self.setWindowTitle("QTextEdit")
-#         self.resize(300, 270)
-#
-#         self.textEdit = QTextEdit()
-#         self.textEdit.setEnabled(False)
-#         self.btnPress1 = QPushButton("Add message")
-#         self.btnPress2 = QPushButton("Clear")
-#
-#         layout = QVBoxLayout()
-#         layout.addWidget(self.textEdit)
-#         layout.addWidget(self.btnPress1)
-#         layout.addWidget(self.btnPress2)
-#         self.setLayout(layout)
-#
-#         self.btnPress1.clicked.connect(self.btnPress1_Clicked)
-#         self.btnPress2.clicked.connect(self.btnPress2_Clicked)
-#
-#     def btnPress1_Clicked(self):
-#         self.textEdit.append(f"Nouveau texte {self.i}")
-#         self.i += 1
-# #        self.textEdit.setPlainText("Hello PyQt5!\nfrom pythonpyqt.com")
-#
-#     def btnPress2_Clicked(self):
-#         self.textEdit.setPlainText("")
-# #        self.textEdit.setHtml("<font color='red' size='6'><red>Hello PyQt5!\nHello</font>")
-#
-#
-# if __name__ == '__main__':
-#     app = QApplication(sys.argv)
-#     win = TextEditDemo()
-#     win.show()
-#     sys.exit(app.exec_())
-

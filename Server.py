@@ -1,34 +1,104 @@
+from __future__ import with_statement #for python 2.5
 import platform
 import socket
 import psutil
 import os
 import sys
 
-Host = "127.0.0.1"  # Standard loopback interface address (localhost)
-Port = 65432  # Port to listen on (non-privileged ports are > 1023)
+lines = []
+with open("C:/Thread/numbers.txt") as file:
+    for line in file:
+        line = line.strip()
+        lines.append(line)
 
-
+Host = line
+Port = 65432
+#
+#
 server_socket = socket.socket()
 server_socket.bind(((Host,Port)))
 server_socket.listen(1)
 conn, address = server_socket.accept()
 print("J'accepte la connection au client depuis %s:%s " % (address[0], address[1]))
 udpSvr = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+print(f"L'OS : {platform.system()}")
+print(f"L'Hostname : {socket.gethostname()}")
+print(f"L'IP : {server_socket.getsockname()[0]}")
+
+
 
 message = "Server"
+
+# def serveur():
+#     msg = "yhnynnh"
+#     msg_split = msg.split()[0]
+#
+#     conn = None
+#     server_socket = None
+#     while msg != "kill":
+#
+#         server_socket = socket.socket()
+#         server_socket.bind(("localhost", 65432))
+#
+#         print(f"L'OS : {platform.system()}")
+#         print(f"L'Hostname : {socket.gethostname()}")
+#         print(f"L'IP : {server_socket.getsockname()[0]}")
+#
+#         server_socket.listen(1)
+#         print('Serveur en attente de connexion')
+#         while msg != "kill" and msg != "reset":
+#             msg = ""
+#             try :
+#                 conn, addr = server_socket.accept()
+#                 print(addr)
+#             except ConnectionError:
+#                 print("erreur de connection")
+#                 break
+#             else :
+#                 while msg != "kill" and msg != "reset" and msg != "disconnect":
+#                     msg = conn.recv(1024).decode()
+#                     print("Received from client: ", msg)
+#                     # msg = input('Enter a message to send: ')
+#                     conn.send(msg.encode())
+#                 conn.close()
+#         print("Connection fini")
+#         server_socket.close()
+#         print("Server fermer")
+#
+#     msg = conn.recv(1024).decode()
+#     if msg_split == ('powershell'):
+#         ps_data = os.popen(msg).read()
+#         conn.send(ps_data.encode())
+#
+#     if message == "os":
+#         print(f"\nL'os est : {platform.system()}")
+#         conn.send(f"\nL'os est : {platform.system()}".encode())
+#
+# if __name__ == '__main__':
+#     serveur()
+
 
 
 
 while message != "kill":
-    msg = conn.recv(1024)
-    message = msg.decode()
-    # conn.send("Server connecté ".encode())
-    # print(message)
+    message = conn.recv(1024).decode()
+
+    msg_split = message.split()[0]
+    conn.send("Server connecté ".encode())
+    print(message)
 
     if message == "name":
         host = socket.gethostname()
         print(f"Le message vien de : {host}")
         conn.send(f"le nom de l'host {host}".encode())
+
+
+
+    if msg_split == ('powershell'):
+        ps_data = os.popen(f'{msg}').read()
+        conn.send(f'{ps_data}'.encode())
+
+
 
     if message == 'ip':
         ip = (str(server_socket.getsockname()[0]))

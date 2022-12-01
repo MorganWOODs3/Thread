@@ -75,7 +75,6 @@ print("Serveur est connecté")
 while message != 'disconnect':
     message = input("\nCommande Server : ")
     client_socket.send(message.encode())
-    print("\nMessage envoyé\n")
     message = client_socket.recv(1024).decode()
     print(f"Message du serveur : \n{message}\n")
 

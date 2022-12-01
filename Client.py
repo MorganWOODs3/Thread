@@ -11,10 +11,30 @@ import socket
 #         uic.loadUi("untitled.ui", self)
 #         self.show()
 #
+#         self.pushButton.clicked.connect(self.login)
+#         self.pushButton_2.clicked.connect(lambda: self.sayit(self.textEdit.toPlainText()))
+#         self.actionClose.triggered.connect(exit)
+#
+#
+#     def login(self):
+#         if self.lineEdit.text() == "momo" and self.lineEdit_2.text() == "momo" :
+#             self.textEdit.setEnabled(True)
+#             self.pushButton_2.setEnabled(True)
+#         else:
+#             message = QMessageBox()
+#             message.setText("Invalid login")
+#             message.exec_()
+#
+#     def  sayit(self, msg):
+#         message = QMessageBox()
+#         message.setText(msg)
+#         message.exec_()
+#
 # def main():
 #     app = QApplication([])
 #     window = MyGUI()
 #     app.exec_()
+
 
 # def main():
 #     app = QApplication([])
@@ -50,9 +70,9 @@ import socket
 #     message.setText(msg)
 #     message.exec_()
 #
+
 # if __name__ == '__main__':
 #     main()
-
 
 host = "127.0.0.1"  # The server's hostname or IP address
 port = 65432  # The port used by the server
@@ -81,3 +101,4 @@ while message != 'disconnect':
 # Fermeture de la socket du client
 client_socket.close()
 print("Connexion arrêter : Server")
+
